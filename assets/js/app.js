@@ -166,24 +166,57 @@
         return `<span class="chip ${cls}">${escapeHtml(term)}</span>`;
     }
 
+    // Raqamli ma'nolarni ("1. ... 2. ...") alohida guruhlarga ajratish
+    function splitSenses(str) {
+        str = (str || '').trim();
+        if (!/(^|\s)\d+\.\s/.test(str)) return [{ num: null, text: str }];
+        const parts = str.split(/\s*(\d+)\.\s*/);
+        const senses = [];
+        for (let i = 0; i < parts.length; i++) {
+            if (/^\d+$/.test(parts[i]) && parts[i + 1] !== undefined) {
+                senses.push({ num: parts[i], text: parts[i + 1] }); i++;
+            } else if (parts[i].trim() && senses.length === 0) {
+                senses.push({ num: null, text: parts[i] });
+            }
+        }
+        return senses.length ? senses : [{ num: null, text: str }];
+    }
+
+    // Element oxiridagi ortiqcha nuqta/probelni tozalash
+    const tidy = t => t.replace(/[.\s]+$/, '').trim();
+
     function chipsBlock(str, cls) {
-        const items = splitTop(str);
-        if (!items.length) return '';
-        return `<div class="chips">${items.map(t => chip(t, { cls })).join('')}</div>`;
+        const senses = splitSenses(str);
+        return senses.map(s => {
+            const items = splitTop(s.text).map(tidy).filter(Boolean);
+            if (!items.length) return '';
+            const chips = `<div class="chips">${items.map(t => chip(t, { cls })).join('')}</div>`;
+            return s.num
+                ? `<div class="sense"><span class="sense__num">${s.num}</span>${chips}</div>`
+                : chips;
+        }).join('');
+    }
+
+    function taxItem(t) {
+        const head = headWord(t);
+        const rest = t.slice(head.length).trim();
+        const target = findLemma(head);
+        const headHtml = target
+            ? `<b class="chip--link" style="cursor:pointer;color:var(--brand)" data-goto="${target.ID}">${escapeHtml(head)}</b>`
+            : `<b>${escapeHtml(head)}</b>`;
+        return `<div class="tax__item">${headHtml} ${escapeHtml(rest)}</div>`;
     }
 
     function taxBlock(str) {
-        const items = splitTop(str);
-        if (!items.length) return '';
-        return `<div class="tax">${items.map(t => {
-            const head = headWord(t);
-            const rest = t.slice(head.length).trim();
-            const target = findLemma(head);
-            const headHtml = target
-                ? `<b class="chip--link" style="cursor:pointer;color:var(--brand)" data-goto="${target.ID}">${escapeHtml(head)}</b>`
-                : `<b>${escapeHtml(head)}</b>`;
-            return `<div class="tax__item">${headHtml} ${escapeHtml(rest)}</div>`;
-        }).join('')}</div>`;
+        const senses = splitSenses(str);
+        return senses.map(s => {
+            const items = splitTop(s.text).map(tidy).filter(Boolean);
+            if (!items.length) return '';
+            const rows = `<div class="tax">${items.map(taxItem).join('')}</div>`;
+            return s.num
+                ? `<div class="sense sense--tax"><span class="sense__num">${s.num}</span>${rows}</div>`
+                : rows;
+        }).join('');
     }
 
     const ICONS = {

@@ -740,6 +740,40 @@ html[data-theme="dark"] .icon-moon {
     color: var(--text-soft);
 }
 
+/* ma'no guruhi (1. ... 2. ...) */
+.sense {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.sense:last-child {
+    margin-bottom: 0;
+}
+
+.sense__num {
+    flex-shrink: 0;
+    width: 23px;
+    height: 23px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: var(--surface-3);
+    color: var(--text-soft);
+    font-size: 12.5px;
+    font-weight: 800;
+    margin-top: 3px;
+}
+
+.sense .chips {
+    flex: 1;
+}
+
+.sense--tax .tax {
+    flex: 1;
+}
+
 /* chips */
 .chips {
     display: flex;

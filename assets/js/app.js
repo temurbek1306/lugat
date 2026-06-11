@@ -4,7 +4,18 @@
 (function () {
     'use strict';
 
-    const DATA = (window.LEKSEMALAR || []).slice();
+    // Lemmani solishtirish uchun normalizatsiya (tutuq belgisi/apostrof variantlarini olib tashlash)
+    const normLemma = s => (s || '').toUpperCase().replace(/[ʻ'’ʼ`]/g, '');
+
+    // Manbada maydonlari aralashib ketgan yozuvlar — tuzatilguniga qadar ko'rsatilmaydi.
+    const EXCLUDED = new Set([
+        'BAHODIR', 'BESHARM', 'BURDSIZ', 'CHAPDAST', 'NOZLI', "OG'IRKARVON", 'VAHSHIY',
+        "BADIXAGO'Y", 'BEHAYO', 'BEQAROR', 'DEVONAVOR', 'DINDOR', "DO'QOL", "DO'STPARVAR",
+        'GAJIR', 'GAPDON', 'IDROKLI', "MAG'RUR", 'OQIBATLI', 'RASHKCHI', 'TANNOZ', 'VAHIMACHI'
+    ].map(normLemma));
+
+    const DATA = (window.LEKSEMALAR || [])
+        .filter(o => !EXCLUDED.has(normLemma(o.Lemma)));
 
     /* ---------- Yordamchi funksiyalar ---------- */
 

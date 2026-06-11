@@ -400,6 +400,10 @@ html[data-theme="dark"] .icon-moon {
     background: var(--pos);
 }
 
+.wordlist button .dot.neu {
+    background: var(--amber);
+}
+
 .wordlist button mark {
     background: color-mix(in srgb, var(--amber) 35%, transparent);
     color: inherit;
@@ -583,6 +587,11 @@ html[data-theme="dark"] .icon-moon {
 .tag--pos {
     color: var(--pos);
     background: var(--pos-soft);
+}
+
+.tag--neu {
+    color: var(--amber);
+    background: var(--amber-soft);
 }
 
 .card__id {

@@ -8,13 +8,21 @@
 
     /* ---------- Yordamchi funksiyalar ---------- */
 
-    // Qutblilik: salbiy / ijobiy / neytral
+    // Qutblilik model kodidagi eksponent belgisiga ko'ra:
+    //   e⁻ → salbiy, e⁺ → ijobiy, e⁰ → kontekstual
     function polarity(o) {
-        const t = (o.Giperonimi + ' ' + o.Uslubiy + ' ' + o.Izoh).toLowerCase();
-        if (/salbiy|nuqson|\billat\b|qusur|huquqbuzar/.test(t)) return 'neg';
-        if (/ijobiy|fazilat|insonparvar|olijanob|insoniylik/.test(t)) return 'pos';
-        return 'neg';
+        const m = o.Model || '';
+        if (/⁻|−/.test(m)) return 'neg';
+        if (/⁰/.test(m)) return 'neu';
+        if (/⁺|\+\)/.test(m)) return 'pos';
+        return 'neu';
     }
+
+    const POL = {
+        pos: { word: 'Ijobiy', cls: 'tag--pos' },
+        neg: { word: 'Salbiy', cls: 'tag--neg' },
+        neu: { word: 'Kontekstual leksema', cls: 'tag--neu' },
+    };
 
     // Birinchi harf (O', G', Sh, Ch digraf emas — oddiy belgi)
     function firstLetter(lemma) {
@@ -66,10 +74,8 @@
     const searchInput = $('#searchInput');
     const wordlistEl = $('#wordlist');
     const listEmptyEl = $('#listEmpty');
-    const countBadge = $('#countBadge');
     const detailEl = $('#detail');
     const alphabarEl = $('#alphabar');
-    const footerStat = $('#footerStat');
 
     /* ---------- Alifbo paneli ---------- */
     const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVXYZ'.split("");
@@ -118,7 +124,6 @@
     /* ---------- So'zlar ro'yxati ---------- */
     function renderList() {
         const list = getFiltered();
-        countBadge.textContent = list.length;
 
         if (!list.length) {
             wordlistEl.innerHTML = '';
@@ -132,7 +137,7 @@
             const pol = polarity(o);
             const active = o.ID === state.activeId ? 'is-active' : '';
             return `<li><button class="${active}" data-id="${o.ID}">
-        <span class="dot ${pol === 'pos' ? 'pos' : ''}"></span>
+        <span class="dot ${pol}"></span>
         <span>${highlight(o.Lemma, q)}</span>
       </button></li>`;
         }).join('');
@@ -186,16 +191,12 @@
     }
 
     function renderDetail(o) {
-        const pol = polarity(o);
-        const polTag = pol === 'pos'
-            ? '<span class="tag tag--pos">Ijobiy fe\'l-atvor</span>'
-            : '<span class="tag tag--neg">Salbiy fe\'l-atvor</span>';
+        const pol = POL[polarity(o)];
 
         let html = `<article class="card">
       <div class="card__head">
-        <div class="card__eyebrow">${polTag}<span class="card__id">${o.ID}</span></div>
+        <div class="card__eyebrow"><span class="tag ${pol.cls}">${pol.word}</span></div>
         <h1 class="card__lemma">${escapeHtml(o.Lemma)}</h1>
-        ${o.Model ? `<div class="card__model"><span>Model</span> ${escapeHtml(o.Model)}</div>` : ''}
       </div>
       <div class="card__body">`;
 
@@ -248,9 +249,6 @@
 
     /* ---------- Welcome ---------- */
     function renderWelcome() {
-        const total = DATA.length;
-        const neg = DATA.filter(o => polarity(o) === 'neg').length;
-        const pos = total - neg;
         const samples = ['MAG\'RUR', 'BAXIL', 'ADOLATLI', 'ZIYRAK', 'BERAHM']
             .filter(findLemma);
 
@@ -260,12 +258,6 @@
       <p>Xarakter va xulq-atvorni bildiruvchi so'zlarning izohi, namunalari,
          sinonim-antonimlari, giponim-giperonimlari hamda uslubiy xoslanishi.
          So'zni tanlang yoki yuqoridan qidiring.</p>
-      <div class="welcome__stats">
-        <div class="stat"><b>${total}</b><span>jami leksema</span></div>
-        <div class="stat"><b style="color:var(--neg)">${neg}</b><span>salbiy</span></div>
-        <div class="stat"><b style="color:var(--pos)">${pos}</b><span>ijobiy</span></div>
-        <div class="stat"><b>${presentLetters.size}</b><span>harf bo'yicha</span></div>
-      </div>
       <div class="welcome__samples">
         ${samples.map(s => `<button class="chip chip--link" data-goto-lemma="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}
       </div>
@@ -374,9 +366,6 @@
         const cur = document.documentElement.getAttribute('data-theme');
         applyTheme(cur === 'dark' ? 'light' : 'dark');
     });
-
-    /* ---------- Footer ---------- */
-    footerStat.textContent = `${DATA.length} ta leksema`;
 
     /* ---------- Ishga tushirish ---------- */
     buildAlphabar();

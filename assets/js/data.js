@@ -1173,14 +1173,14 @@ window.LEKSEMALAR = [
   {
     "Lemma": "MAGʻRUR",
     "Model": "L= sh + x + (e⁰)",
-    "Izoh": "1 Oʻzining or-nomusi, qadr-qimmati, gʻururini saqlagan; gʻururli 2. O'ziga bino qo'ygan, boshqalardan o'zini ustun qo'yuvchi, kibrli va manman shaxslarga nisbatan ishlatiladi.",
-    "Namuna": "1. Unsin xizmatkorxona eshigida magʻrur, lekin oʻychan holda turgan akasini koʻrishi bilan yugurib borib, uni quchoqladi. (Oybek, Tanlangan asarlar).",
-    "Sinonimi": "2. Kamtar boʻling, magʻrur boʻlmang, kekkaymang, (Habibiy).",
-    "Antonimi": "1. Gʻururli, orli, nomusli.",
-    "Giponimi": "2. Kekkaygan, manman",
-    "Giperonimi": "1. Pasrkash, tuban, ablax.",
-    "Uslubiy": "2. Kamtar, xokisor",
-    "Kollokatsiya": "1. Nomusli.",
+    "Izoh": "1 Oʻzining or-nomusi, qadr-qimmati, gʻururini saqlagan; gʻururli 2. Oʻziga bino qoʻygan, boshqalardan oʻzini ustun qoʻyuvchi, kibrli va manman shaxslarga nisbatan ishlatiladi.",
+    "Namuna": "1. Unsin xizmatkorxona eshigida magʻrur, lekin oʻychan holda turgan akasini koʻrishi bilan yugurib borib, uni quchoqladi. (Oybek, Tanlangan asarlar). 2. Kamtar boʻling, magʻrur boʻlmang, kekkaymang. (Habibiy).",
+    "Sinonimi": "1. Gʻururli, orli, nomusli. 2. Kekkaygan, manman",
+    "Antonimi": "1. Pastkash, tuban, ablah. 2. Kamtar, xokisor",
+    "Giponimi": "1. Nomusli. 2. Kekkaygan",
+    "Giperonimi": "feʼl-atvor sifati",
+    "Uslubiy": "Soʻzlashuv uslubi, badiiy uslub, publitsistik",
+    "Kollokatsiya": "magʻrur yigit, magʻrur ayol, magʻrur ota, magʻrur qiz.",
     "ID": "L0091"
   },
   {

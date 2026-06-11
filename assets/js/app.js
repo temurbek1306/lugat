@@ -11,7 +11,7 @@
     const EXCLUDED = new Set([
         'BAHODIR', 'BESHARM', 'BURDSIZ', 'CHAPDAST', 'NOZLI', "OG'IRKARVON", 'VAHSHIY',
         "BADIXAGO'Y", 'BEHAYO', 'BEQAROR', 'DEVONAVOR', 'DINDOR', "DO'QOL", "DO'STPARVAR",
-        'GAJIR', 'GAPDON', 'IDROKLI', "MAG'RUR", 'OQIBATLI', 'RASHKCHI', 'TANNOZ', 'VAHIMACHI'
+        'GAJIR', 'GAPDON', 'IDROKLI', 'OQIBATLI', 'RASHKCHI', 'TANNOZ', 'VAHIMACHI'
     ].map(normLemma));
 
     const DATA = (window.LEKSEMALAR || [])

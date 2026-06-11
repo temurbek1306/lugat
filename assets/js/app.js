@@ -265,16 +265,10 @@
 
         detailEl.innerHTML = `<div class="welcome">
       <div class="welcome__badge">✦ O'zbek tili elektron tezaurusi</div>
-      <h1>Inson <em>fe'l-atvori</em>ni ifodalovchi so'zlar lug'ati</h1>
-      <p>Xarakter va xulq-atvorni bildiruvchi so'zlarning izohi, namunalari,
-         sinonim-antonimlari, giponim-giperonimlari hamda uslubiy xoslanishi.
-         So'zni tanlang yoki yuqoridan qidiring.</p>
+      <h1>Shaxs <em>fe'l-atvori</em>ni ifodalovchi leksemalarning tezaurus lug'ati</h1>
       <div class="welcome__samples">
         ${samples.map(s => `<button class="chip chip--link" data-goto-lemma="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}
       </div>
-      <p class="welcome__hint" style="margin-top:26px">
-        Maslahat: tezkor qidiruv uchun <kbd>/</kbd> tugmasini bosing.
-      </p>
     </div>`;
     }
 

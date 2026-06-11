@@ -367,7 +367,7 @@
     (function initTheme() {
         let t;
         try { t = localStorage.getItem('felatvor-theme'); } catch (_) { }
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t !== 'dark' && t !== 'light') t = 'light'; // standart: kunduzgi mavzu
         applyTheme(t);
     })();
     themeToggle.addEventListener('click', () => {

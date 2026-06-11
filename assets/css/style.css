@@ -249,10 +249,19 @@ html[data-theme="dark"] .icon-moon {
 }
 
 /* ---------- ALPHABET BAR ---------- */
+.alphabar-wrap {
+    position: sticky;
+    top: 67px;
+    z-index: 40;
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
 .alphabar {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 12px 20px 4px;
+    padding: 9px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;

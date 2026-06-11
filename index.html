@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fe'l-atvor tezaurusi — O'zbek tili elektron lug'ati</title>
+    <meta name="description"
+        content="O'zbek tilida inson fe'l-atvori (xarakter-xususiyat)ni ifodalovchi so'zlarning elektron izohli tezaurus lug'ati.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="#" aria-label="Bosh sahifa">
+                <span class="brand__mark">F</span>
+                <span class="brand__text">
+                    <strong>Fe'l-atvor</strong>
+                    <small>tezaurus lug'ati</small>
+                </span>
+            </a>
+
+            <div class="search" role="search">
+                <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                </svg>
+                <input id="searchInput" type="search" autocomplete="off" spellcheck="false"
+                    placeholder="So'z qidiring…  (masalan: mag'rur, baxil)">
+                <kbd class="search__kbd">/</kbd>
+            </div>
+
+            <div class="topbar__actions">
+                <button id="themeToggle" class="icon-btn" title="Mavzuni almashtirish" aria-label="Mavzu">
+                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ALPHABET BAR -->
+    <nav class="alphabar" id="alphabar" aria-label="Alifbo bo'yicha"></nav>
+
+    <!-- MAIN LAYOUT -->
+    <main class="layout">
+        <!-- LEFT: WORD LIST -->
+        <aside class="sidebar" aria-label="So'zlar ro'yxati">
+            <div class="sidebar__head">
+                <span class="sidebar__title">So'zlar</span>
+                <span class="badge" id="countBadge">0</span>
+            </div>
+            <ul class="wordlist" id="wordlist"></ul>
+            <div class="wordlist__empty" id="listEmpty" hidden>
+                <p>Hech narsa topilmadi.</p>
+                <button class="link-btn" id="clearSearch">Qidiruvni tozalash</button>
+            </div>
+        </aside>
+
+        <!-- RIGHT: DETAIL -->
+        <section class="detail" id="detail" aria-live="polite">
+            <!-- Welcome / detail injected by JS -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span id="footerStat"></span>
+        <span class="footer__dot">•</span>
+        <span>O'zbek fe'l-atvor so'zlarining elektron tezaurusi</span>
+    </footer>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

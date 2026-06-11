@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+.container{
+    width: 90%;
+    margin: 0px auto;
+    
+    
+}
+label{
+    display: block;
+    padding: 10px 0px;
+}
+.navbar{
+    width:100% ;
+    height: 70px;
+    background-color: rgb(238, 235, 235);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0px;
+
+   
+}
+.inp{
+    width: 75%;
+    height:40px ;
+    border: none;
+    outline: none;
+    border: 2px solid #c1bfbf;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-left: 10px;
+    
+
+}
+.inp1{
+    width: 100%;
+    height:40px ;
+    border: none;
+    outline: none;
+    background-color: rgb(247, 240, 240);
+    font-size: 18px;
+    padding-left: 10px;
+
+}
+.inp2{
+    
+    width: 270px;
+    height: 470px;
+    background-color: white;
+    overflow-y: scroll;
+    border-top: 3px solid gray;
+    border-left: 3px solid gray;
+   
+    
+}
+.btn1{
+    width: 60px;
+    border-radius: 4px;
+    height:40px ;
+    border: 2px solid #c1bfbf;
+}
+.btn2{
+    width: 60px;
+    border-radius: 4px;
+    height:40px ;
+    border: 2px solid #c1bfbf;
+}
+.inp-wrapper{
+    display: flex;
+    gap: 10px;
+    
+}
+.wrapper-left{
+ width: 38%;
+ background-color: rgb(226, 223, 223);
+ padding: 10px 10px 0px ;
+}
+.wrapper-right{
+width: 100%;
+padding: 10px 10px 0px ; 
+}
+.wrapper-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper1{
+    width: 100%;
+    height: 565px;
+    background-color: rgb(226, 223, 223);
+    padding: 10px  ;
+     overflow-y: scroll;
+}
+.wrapper2{
+    display: flex;
+    width: 100%;
+}
+.izoh{
+    width: 100%;
+    min-height: 80px;
+    background-color: rgb(237, 234, 234);
+     border-top: 3px solid gray;
+    border-left: 3px solid gray;
+}
+.namuna{
+    width: 100%;
+    min-height: 60px;
+    background-color: rgb(237, 234, 234);
+     border-top: 3px solid gray;
+    border-left: 3px solid gray;
+}
+.btn3{
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: rgb(80, 104, 225);
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    
+}
+.btn4{
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: rgb(80, 104, 225);
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    
+}
+.btn5{
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: rgb(80, 104, 225);
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    
+}
+.word{
+  display: flex;
+  gap: 10%;
+}
+.ibora{
+    width: 100%;
+    min-height: 40px;
+    background-color: rgb(237, 234, 234);
+     border-top: 3px solid gray;
+    border-left: 3px solid gray;
+}
+.maqol{
+    width: 100%;
+    min-height: 40px;
+    background-color: rgb(237, 234, 234);
+     border-top: 3px solid gray;
+    border-left: 3px solid gray;
+}
+.h3{
+    margin-top: 15px;
+}
+.btn-hover:hover{
+    color: rgb(0, 34, 255);
+    text-decoration: underline;
+}
+/* .oyna{
+    width: 300px;
+    height: 300px;
+    box-shadow: 1px -1px 5px -0.5px;
+} */
+body{
+    font-family: Georgia;
+}
+.modal{
+    background-color: rgba(0,0,0,0.275);
+    inset: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+.modal-content{
+    background-color: #f4f3f3;
+    width: 320px;
+    height: 280px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-top: 40px;
+    border-radius: 10px;
+    margin-top: 15%;
+    margin-left: -4.5%;
+    position: relative;
+}
+.span{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.active{
+    display: flex;
+}
